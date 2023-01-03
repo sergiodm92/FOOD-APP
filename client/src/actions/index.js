@@ -3,8 +3,8 @@ import swal from 'sweetalert';
 import recipenotfound from '../img/recipe not found.png'
 // import { URL } from '../config/enviroment';
 
-// const URL = "http://food-app-production-7505.up.railway.app/"
-const URL = "http://localhost:3001/" 
+const URL = "http://food-app-production-7505.up.railway.app/"
+// const URL = "http://localhost:3001/" 
 
 const GET_RECIPES = "GET_RECIPES";
 const GET_RECIPES_NAME = "GET_RECIPES_NAME";
