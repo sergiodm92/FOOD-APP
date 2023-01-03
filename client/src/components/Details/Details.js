@@ -37,19 +37,19 @@ useEffect(() => {dispatch(getRecipesId(id))}, [dispatch, id]);
 						<div className='detail-container'>
                             {recipe.image ? <img src={recipe.image} alt="not found1" /> : <img src={chef} alt="not found2" />}
 								<div className='detail-scores'>
-									<p className='h3'>
+									<p className='title'>
 										{recipe.score && 
 											`⭐Score: ${recipe.score} Points`}
 									</p>
-									<p className='h3'>
+									<p className='title'>
 										{recipe.healthScore &&
-											`🍏HealthScore: ${recipe.healthScore}%`}
+											`🍏 HealthScore: ${recipe.healthScore}%`}
 									</p>
-									<p className='h3'>🕐Time: {recipe.readyInMinutes+" minutes"} </p>
+									<p className='title'>🕐 Time: {recipe.readyInMinutes+" minutes"} </p>
 								</div>
 								<div className='detail-scores'>
                                     {recipe.diets && 
-									recipe.diets.map(d => <h3 className='h3'> 🍜{d} </h3>
+									recipe.diets.map(d => <h5 className='h3'> 🍜 {d} </h5>
                                     )}
 								</div>
 							<div className='detail-recipe'>
