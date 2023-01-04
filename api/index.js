@@ -10,6 +10,13 @@ conn.sync().then(() => {
 // Syncing all the models at once.
 
 
+
+const getAllDiets = async () => {
+  const types = await Diet.findAll({
+    attributes: ['id', 'title', 'description']
+});
+
+if(types.length==0){
   let vegetarianDiet = Diet.create({
     title: "Vegetarian",
     description: "No ingredients may contain meat or meat by-products, such as bones or gelatin."
@@ -69,10 +76,16 @@ conn.sync().then(() => {
     title: "fodmap friendly",
     description: "Allowed ingredients include meat, fish/seafood, eggs, vegetables, fresh fruit, coconut oil, olive oil, small amounts of dried fruit and nuts/seeds"
   });
-
+  
 
   Promise.all([vegetarianDiet, veganDiet, glutenFreeDiet, fodmapfriendly, paleolithic, whole30Diet, primalDiet, pescetarianDiet, lactoOvoVegetarianDiet, ketogenicDiet, paleoDiet, dairyfree])
     .then(res => {
       console.log("Preloaded diets"); 
-    });
+    })
+  }
+}
+
+getAllDiets()
+
+  
 });
