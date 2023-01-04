@@ -6,16 +6,15 @@ import './search.css'
 
 
 export default function SearchBar() {
-     const dispatch = useDispatch()
-     const [name, setName] = useState('')
-     const recipename = useSelector((state)=>state.recipesByName)
+    const dispatch = useDispatch()
+    const [name, setName] = useState('')
+    const recipename = useSelector((state)=>state.recipesByName)
     
 
 
-     function handleInputChange(e) {
+    function handleInputChange(e) {
         e.preventDefault(); 
         setName(e.target.value)
-        console.log(name)
     }
     
 
@@ -28,33 +27,18 @@ export default function SearchBar() {
         else dispatch(swich_loading(false))
         setName("");
         
-      
-       
-
     }
 
-
     return (
-
-         
-        <div >
-       
-        <form onSubmit={handleSubmit}>
-            <input
-			className='input-search'
-            onChange={(e) => handleInputChange(e)}
-            type= 'text'
-            placeholder="Search..."
-            value={name}
-            />
-            {/*<button  onClick={(e)=> handleSubmit(e)} type="submit">Buscar</button> */}
-            <button className='btn-search' type="submit">🔎</button>
-        {/* //</div> */}
-        
-        </form>
-        {
-            getRecipesName(name)}
-        
+        <div>
+                <input
+                className='input-search'
+                onChange={(e) => handleInputChange(e)}
+                type= 'text'
+                placeholder="Search..."
+                value={name}
+                />
+                <button className='btn-search' type="submit" onClick={handleSubmit}>🔎</button>
         </div>
         
     )

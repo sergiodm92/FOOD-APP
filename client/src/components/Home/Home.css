@@ -43,7 +43,7 @@
 }
 
 .recipes-home {
-    
+  padding-top: 30px;
   display: grid;
   grid-template-columns: repeat(3, 0.5fr);
   height: 2000px;

@@ -1,11 +1,10 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {getRecipes,getRecipesForDiet,orderByName, orderByHScore,recipesCreate, recipesapi, swich_loading} from "../../actions/index"
 import {Link} from 'react-router-dom';
-import Card from "../Card/Card";
+import Card from "../Card/Card.js";
 import Pagination from "../Pagination/Pagination";
-import Search from "../Search/Search";
+import SearchBar from "../Search/Search";
 import Loading from '../Loading/Loading';
 import './Home.css';
 
@@ -21,7 +20,6 @@ export default function Home(){
     const currentRecipes = allRecipes.slice(indexOfFirstRecipe,indexOfLastRecipe);
     const [order,setorder] = useState ("")
     const [orderscore , setorderscore] = useState(1)
-    const recipescreate = [];
     const pagination = (pageNumber) => {
         if(pageNumber==="<" )setCurrentPage(CurrentPage-1)
         else if(pageNumber===">")setCurrentPage(CurrentPage+1)
@@ -121,7 +119,6 @@ export default function Home(){
                             
                         </select>
                     </div>
-                  
                     <div className="divbuttonbar">
                         <select className="selec" onChange={e=>  filterfordiet(e)}>
                             <option key = 'All' value='All'>By diet...</option>
@@ -145,46 +142,44 @@ export default function Home(){
                             <button className="btn-search" >Create Recipe</button>
                         </Link> 
                     </div>
-                    <Search
-                        setCurrentPage={setCurrentPage}
-                    />   
+                    <SearchBar/>   
                 </div>
                 
-                    <div className="divpag">
-                    {SwichL===false ? 
-                        (<Pagination className ="pagination"
+                <div className="divpag">
+                    {SwichL === false? 
+                        (<Pagination
+                            className ="pagination"
+                            key= "pagination"                            
                             RecipesPerPag={RecipesPerPage}
                             allRecipes={allRecipes.length}
                             pagination = {pagination}
                             CurrentPage = {CurrentPage}
-                            
-                        />) : true
+                        />) : null
                     }
-                    </div>
+                </div>
+                
                 <div className='recipes-home'>
-                { SwichL===true ?  
+                { SwichL?  
                 
                     <div className="loadd">
-                        <Loading/>
-                    </div>
-                
-                    : (currentRecipes.map( e => {
-                    return(
-                    <div>
-                        <Card   
-                            image={e.image} 
-                            title={e.title} 
-                            score={e.score} 
-                            healthScore={e.healthScore} 
-                            diets={e.diets}
-                            id={e.id}
-                            readyInMinutes={e.readyInMinutes}
+                        <Loading
                         />
                     </div>
-                
-                    
-                    )}))
-              
+                    : 
+                        (currentRecipes.map( e => {
+                        return(
+                                <Card   
+                                    key= {e.id}
+                                    image={e.image} 
+                                    title={e.title} 
+                                    score={e.score} 
+                                    healthScore={e.healthScore} 
+                                    diets={e.diets}
+                                    id={e.id}
+                                    readyInMinutes={e.readyInMinutes}
+                                />
+                        )}))
+
                 }
                 </div>
 

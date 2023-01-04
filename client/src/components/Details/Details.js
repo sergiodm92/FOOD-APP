@@ -22,13 +22,13 @@ useEffect(() => {dispatch(getRecipesId(id))}, [dispatch, id]);
 
 	return (
 		<div>
-				    <div className='recipe-container'>
+					<div className='recipe-container'>
 					<Link to='/home' className='link'>
 					<div >
                     <button className="btn-search" >Home</button>
                     </div>
 					</Link>
-					{!recipe? <Loading> </Loading> :
+					{!recipe? <Loading/> :
 					<div className="container-div">
 					
 						<div className='divtitledetail'>
@@ -49,7 +49,7 @@ useEffect(() => {dispatch(getRecipesId(id))}, [dispatch, id]);
 								</div>
 								<div className='detail-scores'>
                                     {recipe.diets && 
-									recipe.diets.map(d => <h5 className='h3'> 🍜 {d} </h5>
+									recipe.diets.map((d,i) => <h5 className='h3' key={i}> 🍜 {d} </h5>
                                     )}
 								</div>
 							<div className='detail-recipe'>
@@ -74,10 +74,8 @@ useEffect(() => {dispatch(getRecipesId(id))}, [dispatch, id]);
 						</div>
 					}
 					</div>
-				
-				 
 		</div>
-  );
+	);
 };
 
 export default Details;

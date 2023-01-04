@@ -1,12 +1,12 @@
 
 import React from 'react';
-import swal from 'sweetalert';
 import { Link } from 'react-router-dom';
 import { BsHeartFill, BsHeartHalf, BsHeart} from 'react-icons/bs'
-import {deleteRecipe, getRecipes} from '../../actions/index'
-import {useDispatch, useSelector} from "react-redux";
+import {deleteRecipe} from '../../actions/index'
+import {useDispatch} from "react-redux";
 
 import './Card.css'
+
 
 const Card = ({ id, score, healthScore, image, title, diets, readyInMinutes}) => {
     
@@ -34,7 +34,7 @@ const Card = ({ id, score, healthScore, image, title, diets, readyInMinutes}) =>
 		let arrayDiets = [];
 		if (diets) {
 			for(let diet of diets) {
-				typeof diet === 'object' ? arrayDiets.push(diet.title) : arrayDiets.push(diet);
+				diet.title ? arrayDiets.push(diet.title) : arrayDiets.push(diet);
 			}
 		}
 		return arrayDiets.length ? arrayDiets.join(',') : 'not found'
@@ -48,44 +48,38 @@ const Card = ({ id, score, healthScore, image, title, diets, readyInMinutes}) =>
         e.preventDefault(); //evita que se recargue y se rompa la pagina
         dispatch(deleteRecipe(id))
     }
-        
 
-
-    
     return (
     <div className='container'>
         
             <div className='card' >
-            <div className='divbutton'>{buttonx()}</div>       
-            
-            <Link className='link' to={`/recipes/${id}`}> 
-                <div className='card-image'>
+                <div className='divbutton'>{buttonx()}</div>       
                 
-                <img src={image} alt="not found" />  
-                </div> 
-                
-                <div className='card-text' >
-                <h6 className="titlec">{title}</h6>
-
-                <h4 className='card-diets'>{getDiets()}</h4>
-                     </div>
-
-                    <div className='card-stats'>
-                 
-                    <div className="stat2" >
-                        {scoreHeart.map(e => <BsHeartFill />)}
-                        {(healthScore % 10 > 0) && <BsHeartHalf />}
-                        {scoreHeartTotal.map(e => <BsHeart />)}
-                        <p className='text-stats'>  Health Score:  {healthScore}</p>
-                        <p className='text-stats'>🕐Time: {readyInMinutes} minutes</p>
-                     
+                <Link className='link' to={`/recipes/${id}`}> 
+                    <div className='card-image'>
+                        <img src={image} alt="not found" />  
+                        </div> 
+                        <div className='card-text' >
+                        <h6 className="titlec">{title}</h6>
+                        <h4 className='card-diets'>{getDiets()}</h4>
                     </div>
 
+                    <div className='card-stats'>
+                        <div className="stat2" >
+                            {scoreHeart.map((e,i) =>    <BsHeartFill 
+                                                            key={i}
+                                                        />)}
+                            {(healthScore % 10 > 0) && <BsHeartHalf />}
+                            {scoreHeartTotal.map((e,i) =>   <BsHeart
+                                                                key={i}
+                                                            />)}
+                            <p className='text-stats'>  Health Score:  {healthScore}</p>
+                            <p className='text-stats'>🕐Time: {readyInMinutes} minutes</p>
+                        </div>
+                    </div>
 
-                </div>
                 </Link>
             </div>
-       
     </div>
     );
 };
