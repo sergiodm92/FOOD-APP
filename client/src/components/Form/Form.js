@@ -4,8 +4,6 @@ import {getDiets, postRecipe } from "../../actions/index";
 import swal from 'sweetalert';
 import { Link } from "react-router-dom";
 import './form.css';
-import SendIcon from '@material-ui/icons/Send';
-import DeleteIcon from '@material-ui/icons/Delete';
 import '../Home/Home.css'
 
 
@@ -246,8 +244,8 @@ const Form = () => {
                 )) }
           </div>
        <div className='form-buttons'>
-        <button onClick={handleReset} className='btn-reset'> <DeleteIcon /> </button>
-        <button onClick={handleSubmit} className='btn-create'> <SendIcon /> </button>
+        <button onClick={handleReset} className='btn-reset'>  </button>
+        <button onClick={handleSubmit} className='btn-create'>  </button>
         </div>
       </form>
       </div>
