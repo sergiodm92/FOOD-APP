@@ -52,7 +52,6 @@ const Form = () => {
   const dispatch = useDispatch();
 
   const diets = useSelector((state) => state.diets);
-
   const [form, setForm] = useState(formData);
   const [error, setError] = useState({});
 

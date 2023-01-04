@@ -8,8 +8,8 @@ import { Provider } from 'react-redux';
 import axios from 'axios';
 
 
-axios.defaults.baseURL = 'http://food-app-production-7505.up.railway.app' 
-// axios.defaults.baseURL = 'https://us-central1-software-de-gestion-carnes.cloudfunctions.net/server'
+// axios.defaults.baseURL = 'http://food-app-production-7505.up.railway.app' 
+axios.defaults.baseURL = 'http://localhost:3001'
 
 
 
