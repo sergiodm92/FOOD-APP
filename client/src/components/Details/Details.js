@@ -23,7 +23,7 @@ function Details(){
 		<div>
 					<div className='recipe-container'>
 					<Link to='/home' className='link'>
-					<div >
+					<div className='btn-home'>
                     <button className="btn-search" >Home</button>
                     </div>
 					</Link>
@@ -48,7 +48,7 @@ function Details(){
 								</div>
 								<div className='detail-scores'>
                                     {recipe.diets && 
-									recipe.diets.map((d,i) => <h5 className='h3' key={i}> 🍜 {d} </h5>
+									recipe.diets.map((d,i) => <h5 className='h5' key={i}> 🍜 {d} </h5>
                                     )}
 								</div>
 							<div className='detail-recipe'>

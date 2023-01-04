@@ -58,8 +58,8 @@ const Card = ({ id, score, healthScore, image, title, diets, readyInMinutes}) =>
                 <Link className='link' to={`/recipes/${id}`}> 
                     <div className='card-image'>
                         <img src={image} alt="not found" />  
-                        </div> 
-                        <div className='card-text' >
+                    </div> 
+                    <div className='card-text' >
                         <h6 className="titlec">{title}</h6>
                         <h4 className='card-diets'>{getDiets()}</h4>
                     </div>

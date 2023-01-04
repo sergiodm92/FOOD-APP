@@ -2,10 +2,15 @@
 	margin-top: 20px;
 	align-items: center;
 	justify-content: center;
-	zoom: 80%;
-	
+	zoom: 0.8;
+	align-items: center;
 }
+.btnHome{
+	display: flex;
+	justify-content: center;
+	width: 100%;
 
+}
 .form-container {
 	margin:auto;
 	margin-top: 20px;

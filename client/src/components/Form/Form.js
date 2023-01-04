@@ -7,7 +7,6 @@ import './form.css';
 import '../Home/Home.css'
 
 
-
 const formData = {
   title: '',
   score: '',
@@ -18,7 +17,6 @@ const formData = {
   diets: [],
   readyInMinutes: ''
 };
-
 
 //validaciones
 export const validate = (recipe) => {
@@ -129,9 +127,11 @@ const Form = () => {
 
   return (
     <div className='form-main-container'>
-     <Link to='/home' className='link'>
-    <button className="buttonhome" >Home</button>
-    </Link>
+      <div className="btnHome">
+      <Link to='/home' className='link'>
+        <button className="btn-search" >Home</button>
+      </Link>
+      </div>
       <div className='form-container'>
         
       <form className='form-div'>
@@ -243,8 +243,8 @@ const Form = () => {
                 )) }
           </div>
        <div className='form-buttons'>
-        <button onClick={handleReset} className='btn-reset'>  </button>
-        <button onClick={handleSubmit} className='btn-create'>  </button>
+        <button onClick={handleReset} className='btn-reset'> Reset</button>
+        <button onClick={handleSubmit} className='btn-create'>Create</button>
         </div>
       </form>
       </div>
