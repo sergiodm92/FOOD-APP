@@ -1,10 +1,6 @@
 import axios from 'axios';
 import swal from 'sweetalert';
 import recipenotfound from '../img/recipe not found.png'
-// import { URL } from '../config/enviroment';
-
-const URL = "http://food-app-production-7505.up.railway.app/"
-// const URL = "http://localhost:3001/" 
 
 const GET_RECIPES = "GET_RECIPES";
 const GET_RECIPES_NAME = "GET_RECIPES_NAME";
@@ -18,7 +14,7 @@ const GET_DIET_TYPES ="GET_DIET_TYPES";
 const GET_RECIPES_CREATE = "GET_RECIPES_CREATE";
 const GET_RECIPES_API = "GET_RECIPES_API";
 const SWICH_LOADING = "SWICH_LOADING"
-// const URL = "http://localhost:3002/";
+
 
 //-------------------------------
 //con async await
@@ -36,7 +32,7 @@ const SWICH_LOADING = "SWICH_LOADING"
 //con promise
 export function getRecipes(){
     return (dispatch)=>{
-        axios.get(`${URL}recipes`)
+        axios.get(`/recipes`)
         .then((response)=>{
             return dispatch({
             type:GET_RECIPES,
@@ -53,7 +49,7 @@ export const getRecipesId = (id) => {
     return async (dispatch) => {
        
         try {
-            const recipes = await axios.get(`${URL}recipes/${id}`);
+            const recipes = await axios.get(`/recipes/${id}`);
             return dispatch({ type: GET_RECIPES_ID, payload: recipes.data });
         } catch (e) {
             console.log(e);
@@ -69,7 +65,7 @@ export const getDiets = () => {
     return async (dispatch) => {
       
         try {
-            const diets = await axios.get(`${URL}types`);
+            const diets = await axios.get(`/types`);
             return dispatch({ type: GET_DIETS, payload: diets.data });
         } catch (e) {
             console.log(e);
@@ -84,7 +80,7 @@ export const getRecipesForDiet = (diet) => {
         
         try {
             
-            const recipes = await axios.get(`${URL}types/${diet}`);
+            const recipes = await axios.get(`/types/${diet}`);
             return dispatch({ type: GET_RECIPES_FOR_DIET, payload: recipes.data });
         } catch (e) {
             console.log(e);
@@ -108,7 +104,7 @@ export const orderByHScore= (payload) => {
 export function getDietTypes(){
     return async function (dispatch){
         try{
-            const json2 = await axios.get(`${URL}types`);
+            const json2 = await axios.get(`/types`);
             return dispatch ({
                 type:GET_DIET_TYPES,
                 payload: json2.data
@@ -122,7 +118,7 @@ export function getDietTypes(){
 export function postRecipe(payload){
     return async function (dispatch){
         try{
-            const json = await axios.post(`${URL}recipe`, payload);
+            const json = await axios.post(`/recipe`, payload);
             return dispatch ({
                 type:CREATE_RECIPE,
                 payload: json
@@ -137,7 +133,7 @@ export function postRecipe(payload){
 export function getRecipesName(name){
     return function(dispatch){
       
-            axios.get(`${URL}recipes?title=`+name) 
+            axios.get(`/recipes?title=`+name) 
             .then(responese=>{return dispatch({
                 type: GET_RECIPES_NAME, 
                 payload: responese.data
@@ -156,7 +152,7 @@ export function getRecipesName(name){
 
     export function recipesCreate(){
         return (dispatch)=>{
-            axios.get(`${URL}recipescreate`)
+            axios.get(`/recipescreate`)
             .then((response)=>{
                 return dispatch({
                 type:GET_RECIPES_CREATE,
@@ -168,7 +164,7 @@ export function getRecipesName(name){
 
     export function recipesapi(){
         return (dispatch)=>{
-            axios.get(`${URL}recipesapi`)
+            axios.get(`/recipesapi`)
             .then((response)=>{
                 return dispatch({
                 type:GET_RECIPES_API,
@@ -182,7 +178,7 @@ export function getRecipesName(name){
     export function deleteRecipe(id) {
         return async (dispatch) => {
           try {
-            const response = await axios.delete(`${URL}recipe/${id}`);
+            const response = await axios.delete(`/recipe/${id}`);
             if(response)return dispatch(getRecipes())
             } catch (error) {
             console.log(error);
