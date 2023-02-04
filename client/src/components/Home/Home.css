@@ -1,9 +1,7 @@
 .upperbar{
-  position: relative;
   align-items: center;
   justify-content: space-between ;
   background-color: #b8acac;
-  backface-visibility: hidden;
   display: flex;
   border-width: 3px;
   border-color: #000000;
@@ -33,8 +31,7 @@ select option{
 }
 
 .recipes-home {
-  margin-left: 5%;
-  margin-right: 5%;
+  padding-left: 6%;
   width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 0.5fr);
@@ -110,9 +107,10 @@ grid-column: 2/2;
   }
   
 .wphome {
+position: absolute;
 background-image: url(../../img/wpfood.jpg);
 padding-top: 30px;
-zoom: 90%;
+width: 100%;
 }
 
 .divpag{
@@ -131,7 +129,7 @@ justify-content: center;
   text-align: center;
   font-size: 28px;
   padding: 20px;
-  width: 200px;
+  width: 150px;
   transition: all 0.5s;
   cursor: pointer;
   margin: 5px;
